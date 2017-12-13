@@ -35,17 +35,6 @@ sf::Vector2f Particle::getPosition()
 	return m_position;
 }
 
-sf::Vector2f Particle::getAcceleration()
-{
-	return m_acceleration;
-}
-
-void Particle::setAcceleration()
-{
-	m_acceleration.x = 0.0f;
-	m_acceleration.y = 0.0f;
-
-}
 
 void Particle::addForce(sf::Vector2f force) {
 	v_force += force;

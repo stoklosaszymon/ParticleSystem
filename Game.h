@@ -10,7 +10,7 @@ class Game : private sf::NonCopyable
 public:
 	Game();
 	~Game();
-	void					run();
+	void								run();
 
 private:
 	void								processEvents();
