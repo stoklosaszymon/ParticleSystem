@@ -1,6 +1,6 @@
 #include "ParticleSystem.h"
 
-ParticleSystem::ParticleSystem(int ammount)
+ParticleSystem::ParticleSystem(int ammount) : btnPressed(false)
 {
 	createParticles(ammount);
 }
@@ -20,19 +20,26 @@ void ParticleSystem::createParticles(int ammount)
 }
 
 void ParticleSystem::updatePosition(float dt) {
-	for (auto &particle : particles) {
+	for (auto &particle : std::move(particles)) {
 		particle->update(dt);
 	}
 }
 
 void ParticleSystem::mouseMove() {
 	if (btnPressed) {
-		for (auto &particle : particles) {
+		for (auto &particle : std::move(particles) ) {
 			particle->addForce((mousePosition - particle->getPosition()) / pow(Distance(particle->getPosition(), mousePosition), 2));
 		}
 	}
 }
 
+
+void ParticleSystem::artificialForce() {
+	for (auto &particle : particles)
+	{
+		particle->addForce((mousePosition - particle->getPosition()) * 0.5f / Distance(mousePosition, particle->getPosition()));
+	}
+}
 
 float ParticleSystem::Distance(sf::Vector2f& v1, sf::Vector2f& v2)
 {

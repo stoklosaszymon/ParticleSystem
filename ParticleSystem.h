@@ -2,6 +2,8 @@
 #include "Particle.h"
 #include <memory>
 
+#include <array>
+
 class ParticleSystem
 {
 public:
@@ -10,6 +12,7 @@ public:
 	void										createParticles(int);
 	void										updatePosition(float);
 	void										mouseMove();
+	void										artificialForce();
 	float										Distance(sf::Vector2f& v1, sf::Vector2f& v2);
 	bool										btnPressed;
 	

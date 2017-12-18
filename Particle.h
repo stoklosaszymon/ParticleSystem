@@ -1,4 +1,5 @@
 #include <SFML\Graphics.hpp>
+#include <GL/glut.h>
 
 class Particle
 {
@@ -9,13 +10,13 @@ public:
 	float								getMass();
 	sf::Vector2f						getFullForce();
 	sf::Vector2f						getPosition();
+	sf::Vector2f						getSpeed();
 	void								setMass(float mass);
 	void								update(float dt);
 	void								addForce(sf::Vector2f);
 	void								clearForce();
 
-	sf::Vertex							particle;
-		
+	void								draw(sf::RenderTarget& target, sf::RenderStates states);
 
 private:
 

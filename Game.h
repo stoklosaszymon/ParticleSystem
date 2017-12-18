@@ -2,7 +2,7 @@
 #include <SFML/Graphics.hpp>
 #include "ParticleSystem.h"
 #include <memory>
-#include <future>
+#include <GL\freeglut.h>
 
 
 class Game : private sf::NonCopyable
@@ -17,7 +17,6 @@ private:
 	void								update(sf::Time elapsedTime);
 	void								render();
 	void								updateStatistics(sf::Time elapsedTime);
-
 
 	float								zoom;
 	float								moveY;

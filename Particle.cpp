@@ -11,6 +11,11 @@ Particle::~Particle()
 {
 }
 
+
+sf::Vector2f Particle::getSpeed() {
+	return speed;
+}
+
 void Particle::setMass(float mass)
 {
 	m_mass = mass;
@@ -26,7 +31,6 @@ void Particle::update(float dt)
 	prev_position = m_position;
 	m_position = m_position + speed*(float)dt + 0.5f * getFullForce() / m_mass*(float)pow(dt, 2);
 	speed = (m_position - prev_position) / (float)dt;
-	particle.position = m_position;
 	clearForce();
 }
 
@@ -45,5 +49,12 @@ sf::Vector2f Particle::getFullForce() {
 }
 
 void Particle::clearForce() {
-	v_force = sf::Vector2f(0.0, 0.0);
+	v_force = { 0.0, 0.0 };
+}
+
+void Particle::draw(sf::RenderTarget& target, sf::RenderStates states)
+{	
+		glBegin(GL_POINTS);
+		glVertex2f(getPosition().x, getPosition().y);
+		glEnd();
 }
